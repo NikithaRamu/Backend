@@ -124,8 +124,6 @@ public class UserAuthController {
                 .setIssuedAt(new Date())
                 .signWith(SignatureAlgorithm.HS256,"nikitha")
                 .compact();
-//		token=Jwts.builder().setId(username).setSubject(password)
-//		.signWith(SignatureAlgorithm.HS256, "nikitha").compact();
 		return token;
 	}
 }
