@@ -1,0 +1,5 @@
+package com.nikitha.fsd.zuul.config;
+
+public class WebMvcConfig {
+
+}

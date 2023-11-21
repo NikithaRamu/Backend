@@ -1,0 +1,12 @@
+package com.nikitha.fsd.gipher.exception;
+
+public class BookmarkAlreadyExistsException extends Exception {
+	
+	private static final long serialVersionUID = 1L;
+
+	public NewsSourceNotCreatedException(String message) {
+		super(message);
+	}
+
+
+}

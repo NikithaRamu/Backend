@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="BookmarkServiceImplTest" project="GipherManager" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="com.nikitha.fsd.gipher.test.service.BookmarkServiceImplTest" time="1.081" displayname="BookmarkServiceImplTest" uniqueid="[engine:junit-jupiter]/[class:com.nikitha.fsd.gipher.test.service.BookmarkServiceImplTest]">
+    <testcase name="deleteAllGifsSucess" classname="com.nikitha.fsd.gipher.test.service.BookmarkServiceImplTest" time="1.046" displayname="deleteAllGifsSucess()" uniqueid="[engine:junit-jupiter]/[class:com.nikitha.fsd.gipher.test.service.BookmarkServiceImplTest]/[method:deleteAllGifsSucess()]"/>
+    <testcase name="getAllGifs" classname="com.nikitha.fsd.gipher.test.service.BookmarkServiceImplTest" time="0.006" displayname="getAllGifs()" uniqueid="[engine:junit-jupiter]/[class:com.nikitha.fsd.gipher.test.service.BookmarkServiceImplTest]/[method:getAllGifs()]"/>
+    <testcase name="addBookmarkSuccess" classname="com.nikitha.fsd.gipher.test.service.BookmarkServiceImplTest" time="0.005" displayname="addBookmarkSuccess()" uniqueid="[engine:junit-jupiter]/[class:com.nikitha.fsd.gipher.test.service.BookmarkServiceImplTest]/[method:addBookmarkSuccess()]"/>
+    <testcase name="addNewsFailure" classname="com.nikitha.fsd.gipher.test.service.BookmarkServiceImplTest" time="0.005" displayname="addNewsFailure()" uniqueid="[engine:junit-jupiter]/[class:com.nikitha.fsd.gipher.test.service.BookmarkServiceImplTest]/[method:addNewsFailure()]"/>
+    <testcase name="deleteAllGifsSucessFailure" classname="com.nikitha.fsd.gipher.test.service.BookmarkServiceImplTest" time="0.019" displayname="deleteAllGifsSucessFailure()" uniqueid="[engine:junit-jupiter]/[class:com.nikitha.fsd.gipher.test.service.BookmarkServiceImplTest]/[method:deleteAllGifsSucessFailure()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,5 @@
+package com.nikitha.fsd.gipher.exception;
+
+public class BookmarkNotFoundException {
+
+}

@@ -1,0 +1,10 @@
+
+server:
+  port: 8081
+spring:
+  data:
+    mongodb:
+      database: gipherBookmark
+      uri: mongodb://127.0.0.1:27017/gipherBookmark?retryWrites=true&w=majority
+  kafka:
+    bootstrap-address: localhost:9092

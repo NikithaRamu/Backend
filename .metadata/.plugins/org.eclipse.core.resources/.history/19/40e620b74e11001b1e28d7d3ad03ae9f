@@ -1,0 +1,10 @@
+package com.nikitha.fsd.eureka;
+
+@SpringBootTest
+class NewzNetflixEurekaServerApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

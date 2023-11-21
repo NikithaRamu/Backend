@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EurekaService/EurekaService.iml" filepath="$PROJECT_DIR$/EurekaService/EurekaService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GipherManager/GipherManager.iml" filepath="$PROJECT_DIR$/GipherManager/GipherManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RecommendationSystem/RecommendationSystem.iml" filepath="$PROJECT_DIR$/RecommendationSystem/RecommendationSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UserAuthentication/UserAuthentication.iml" filepath="$PROJECT_DIR$/UserAuthentication/UserAuthentication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ZuulService/ZuulService.iml" filepath="$PROJECT_DIR$/ZuulService/ZuulService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gipher-capstone.iml" filepath="$PROJECT_DIR$/gipher-capstone.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,96 @@
+package com.nikitha.fsd.gipher.test.repository;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+
+import com.nikitha.fsd.gipher.model.Gif;
+import com.nikitha.fsd.gipher.model.User;
+import com.nikitha.fsd.gipher.repository.BookmarkRepository;
+import com.stackroute.newz.model.News;
+import com.stackroute.newz.model.NewsSource;
+import com.stackroute.newz.model.Reminder;
+import com.stackroute.newz.model.UserNews;
+import com.stackroute.newz.repository.NewsRepository;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+@ExtendWith(SpringExtension.class)
+@DataMongoTest
+public class BookmarkRepositoryTest {
+
+    @Autowired
+    private BookmarkRepository bookmarkRepository;
+
+    private Gif gif;
+    private User user;
+    private List<Gif> gifList = null;
+
+
+    @BeforeEach
+    public void setUp() throws Exception {
+
+    	gif = new Gif();
+    	gif.setGifId("1");
+    	gif.setGifURL("wwww.gif.com");
+    	gif.setBookmarkCreatedAt();
+
+        gifList = new ArrayList<>();
+        gifList.add(gif);
+
+        user = new User();
+        user.setUserId("Nikitha");
+        user.setGif(gifList);
+
+    }
+
+    @AfterEach
+    public void tearDown() throws Exception {
+    	bookmarkRepository.deleteAll();
+    }
+
+    @Test
+    public void AddUserTest() {
+    	bookmarkRepository.insert(user);
+        List<Gif> allGifList = bookmarkRepository.findById("Nikitha").get().getGif();
+        assertThat(allGifList.get(0).getGifId(), is(allGifList.get(0).getGifId()));
+    }
+
+
+    @Test
+    public void deleteNewsTest() {
+    	newsRepository.insert(userNews);
+        List<News> allNews = newsRepository.findById("Becky123").get().getNewslist();
+        assertThat(newsList.get(0).getNewsId(), is(allNews.get(0).getNewsId()));
+        Iterator<News> iterator = allNews.listIterator();
+        while (iterator.hasNext()) {
+            news = iterator.next();
+            if (news.getNewsId() == 1)
+                iterator.remove();
+        }
+
+        userNews.setNewslist(allNews);
+        newsRepository.save(userNews);
+
+        allNews = newsRepository.findById("Becky123").get().getNewslist();
+
+        assertThat(true,is(allNews.isEmpty()));
+
+    }
+
+    @Test
+    public void getAllNewsByUserId() {
+
+    	newsRepository.insert(userNews);
+        List<News> allNews = newsRepository.findById("Becky123").get().getNewslist();
+        assertThat(allNews.size(),is(1));
+    }
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun AddUserGifTest()" project="GipherManager" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.nikitha.fsd.gipher.test.repository.BookmarkRepositoryTest" time="58.025" displayname="BookmarkRepositoryTest" uniqueid="[engine:junit-jupiter]/[class:com.nikitha.fsd.gipher.test.repository.BookmarkRepositoryTest]">
+    <testcase name="AddUserGifTest" classname="com.nikitha.fsd.gipher.test.repository.BookmarkRepositoryTest" time="58.025" displayname="AddUserGifTest()" uniqueid="[engine:junit-jupiter]/[class:com.nikitha.fsd.gipher.test.repository.BookmarkRepositoryTest]/[method:AddUserGifTest()]"/>
+  </testsuite>
+</testrun>

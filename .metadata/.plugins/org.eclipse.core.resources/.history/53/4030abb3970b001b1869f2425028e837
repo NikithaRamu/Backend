@@ -1,0 +1,35 @@
+package com.nikitha.fsd.gipher.model;
+
+import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
+public class Gif {
+		
+		@Id
+		private String userId;
+		private String gifId;
+		private String gifURL;
+		private int bookmarkCount;
+		private LocalDateTime bookmarkCreatedAt;
+		
+		
+		public Gif()
+		{
+			
+		}
+		
+		
+		public Gif(String userId, String gifId, String gifURL, int bookmarkCount, LocalDateTime bookmarkCreatedAt) {
+			super();
+			this.userId = userId;
+			this.gifId = gifId;
+			this.gifURL = gifURL;
+			this.bookmarkCount = bookmarkCount;
+			this.bookmarkCreatedAt = bookmarkCreatedAt;
+		}
+	
+		
+}

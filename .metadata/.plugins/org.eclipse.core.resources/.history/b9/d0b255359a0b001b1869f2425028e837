@@ -1,0 +1,12 @@
+package com.nikitha.fsd.gipher.model;
+
+import java.util.List;
+
+public class Bookmark {
+	
+	private String userId;
+	private List<Gif> gif;
+	
+	
+
+}

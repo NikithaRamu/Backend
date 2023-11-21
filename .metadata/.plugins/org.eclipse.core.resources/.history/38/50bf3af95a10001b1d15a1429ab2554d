@@ -1,0 +1,62 @@
+package com.nikitha.fsd.recommend.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import com.nikitha.fsd.recommend.model.GifModelToSave;
+import com.nikitha.fsd.recommend.service.GifRecommendService;
+
+
+@RestController
+public class RecommendationController {
+	
+	@Autowired
+	GifRecommendService gifRecommendService;
+	
+//	@RequestMapping(value="/api/v1/bookmark/allgifs",method = RequestMethod.GET)	
+//	public ResponseEntity<GifModelToSave> addGif(@RequestBody GifModelToSave GifModelToSave ) 
+//	{	
+//		ResponseEntity <GifModelToSave>responseEntity =null;	
+//		boolean isGifAdded=false;
+//		isGifAdded=gifRecommendService.saveGif(GifModelToSave);
+//    	if(isGifAdded)
+//    	{
+//    
+//    		responseEntity = new ResponseEntity<GifModelToSave>(GifModelToSave,HttpStatus.CREATED);
+//    	}
+//    	else
+//    	{
+//    		responseEntity = new ResponseEntity<GifModelToSave>(GifModelToSave,HttpStatus.CONFLICT);
+//    	}
+//
+//		return responseEntity;
+//	}
+
+	@RequestMapping(value="/api/v1/recommend/allgifs",method = RequestMethod.GET)	
+	public ResponseEntity<GifModelToSave> findAllGifs() 
+	{	
+		ResponseEntity <GifModelToSave>responseEntity =null;	
+		
+		List<GifModelToSave> allRecommendGifs = gifRecommendService.getAllGifs();
+    	if(allRecommendGifs!=null && 1allRecommendGifs.isEmpty())
+    	{
+    
+    		responseEntity = new ResponseEntity<GifModelToSave>(HttpStatus.CREATED);
+    	}
+    	else
+    	{
+    		responseEntity = new ResponseEntity<GifModelToSave>(HttpStatus.CONFLICT);
+    	}
+
+		return responseEntity;
+	}
+
+}

@@ -1,0 +1,13 @@
+package snippet;
+
+public class Snippet {
+	public static void main(String[] args) {
+		eureka:
+		  client:
+		    fetchRegistry: true
+		    registerWithEureka: true
+		    serviceUrl:
+		      defaultZone: http://eureka:8761/eureka
+	}
+}
+

@@ -1,0 +1,46 @@
+package com.nikitha.fsd.recommend.service;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.nikitha.fsd.recommend.model.GifModelToSave;
+import com.nikitha.fsd.recommend.repository.RecommendRepository;
+
+@Service
+public class GifRecommendServiceImpl implements GifRecommendService
+
+{
+	@Autowired
+	RecommendRepository recommendRepository;
+	
+	@Override
+	public List<GifModelToSave> getAllGifs() {
+	
+		Optional<List<GifModelToSave>> listOfRecommendGifs = Optional.empty();	
+		listOfRecommendGifs = Optional.ofNullable(recommendRepository.findAll());
+		return listOfRecommendGifs.get();
+	}
+
+	@Override
+	public GifModelToSave findGifById(String gifId) {
+		
+		Boolean isRecommend=false;
+		Optional<GifModelToSave> findGifById = recommendRepository.findById(gifId);
+        return findGifById.get();
+	}
+
+	@Override
+	public void saveGif(GifModelToSave gif) {
+		
+		Boolean isGifSaved = false;
+		if(recommendRepository.save(gif)!=null);
+	
+		
+	}
+
+
+
+}
+
+
+

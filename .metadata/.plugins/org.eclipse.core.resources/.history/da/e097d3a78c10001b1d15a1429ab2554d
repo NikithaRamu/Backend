@@ -1,0 +1,16 @@
+package com.nikitha.fsd.gipher;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@EnableEurekaClient
+public class GipherManagerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(GipherManagerApplication.class, args);
+	    System.out.println("hello gipher manager");
+
+	}
+
+}

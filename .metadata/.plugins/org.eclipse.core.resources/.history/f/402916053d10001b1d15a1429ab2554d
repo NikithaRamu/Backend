@@ -1,0 +1,43 @@
+package com.nikitha.fsd.recommend.model;
+
+import java.util.List;
+
+public class GifList {
+	
+	GifModelToSave gifRecommendSystem;
+	private List<GifModelToSave> gifList;
+	
+	public GifList(GifModelToSave gifRecommendSystem, List<GifModelToSave> gifList) {
+
+		this.gifRecommendSystem = gifRecommendSystem;
+		this.gifList = gifList;
+	}
+
+	public GifList() {
+	
+	}
+
+	public GifModelToSave getGifRecommendSystem() {
+		return gifRecommendSystem;
+	}
+
+	public void setGifRecommendSystem(GifModelToSave gifRecommendSystem) {
+		this.gifRecommendSystem = gifRecommendSystem;
+	}
+
+	public List getGifList() {
+		return gifList;
+	}
+
+	public void setGifList(List<GifModelToSave> gifList) {
+		
+		gifList.add(gifRecommendSystem);
+		this.gifList = gifList;
+	}
+
+	@Override
+	public String toString() {
+		return "GifList [gifRecommendSystem=" + gifRecommendSystem + ", gifList=" + gifList + "]";
+	}
+	
+}

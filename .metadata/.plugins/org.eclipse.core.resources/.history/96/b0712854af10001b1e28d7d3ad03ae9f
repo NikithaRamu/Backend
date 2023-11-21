@@ -1,0 +1,5 @@
+package com.nikitha.fsd.filter;
+
+public class JWTFilter {
+
+}

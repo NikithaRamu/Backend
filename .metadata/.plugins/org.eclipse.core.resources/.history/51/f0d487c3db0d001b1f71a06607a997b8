@@ -1,0 +1,5 @@
+package com.nikitha.fsd.auth.model;
+
+public class Token {
+
+}

@@ -1,0 +1,12 @@
+package com.nikitha.fsd.recommend.repository;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+import com.nikitha.fsd.gipher.model.User;
+
+
+@Repository
+public interface RecommendRepository extends MongoRepository<Gif, String> {
+	
+
+}

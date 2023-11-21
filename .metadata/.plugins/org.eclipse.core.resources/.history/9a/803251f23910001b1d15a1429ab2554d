@@ -1,0 +1,12 @@
+package com.nikitha.fsd.recommend.model;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+public class List <>GifRecommendSystem {
+	
+
+	private String gifId;
+	
+
+}

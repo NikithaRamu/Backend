@@ -1,0 +1,8 @@
+
+server:
+  port: 8081
+spring:
+  data:
+    mongodb:
+      database: test2
+      uri: mongodb://127.0.0.1:27017/test1?retryWrites=true&w=majority

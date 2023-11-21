@@ -1,0 +1,20 @@
+package com.nikitha.fsd.recommend;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+import com.nikitha.fsd.recommend.model.Gif;
+
+@Service
+public class kafkaRecommendationListener {
+	 @KafkaListener(topics = "gif-topic")
+	    
+	    public void addNewGif(Gif gif) {
+	        Gif ticket = new Gif();
+	        ticket.setEnquiryCode(enquiryCode);
+	        ticket.setOpen(true);
+
+	        ticketRepository.save(ticket);
+	    }
+	
+
+
+}

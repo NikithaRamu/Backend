@@ -1,0 +1,11 @@
+
+server:
+  port: 8081
+spring:
+  data:
+    mongodb:
+      database: test
+      uri: mongodb://127.0.0.1:27017/test?retryWrites=true&w=majority
+
+
+mongodb://127.0.0.1:27017/game-of-thrones

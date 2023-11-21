@@ -1,0 +1,13 @@
+package com.nikitha.fsd.auth.service;
+
+public interface UserAuthService {
+	
+	/*
+	 * Should not modify this interface. You have to implement these methods in
+	 * corresponding Impl classes
+	 */
+
+    public User findByUserIdAndPassword(String userId, String password) throws UserNotFoundException;
+
+    boolean saveUser(User user) throws UserAlreadyExistsException;
+}

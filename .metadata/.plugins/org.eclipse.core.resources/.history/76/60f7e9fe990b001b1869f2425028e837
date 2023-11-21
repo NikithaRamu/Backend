@@ -1,0 +1,5 @@
+package com.nikitha.fsd.gipher.model;
+
+public class UserService {
+
+}

@@ -1,0 +1,19 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: api-gateway
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+zuul:
+  host:
+    connect-time-millis: 60000
+  routes:
+    person:
+      serviceId: person-service
+    house:
+      serviceId: house-service

@@ -1,0 +1,10 @@
+package com.nikitha.fsd.gipher.exception;
+
+public class BookmarkNotFoundException {
+
+	private static final long serialVersionUID = 1L;
+
+	public BookmarkNotFoundException(String message) {
+		super(message);
+	}
+}

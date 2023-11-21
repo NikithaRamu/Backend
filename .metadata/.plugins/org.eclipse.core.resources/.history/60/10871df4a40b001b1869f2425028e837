@@ -1,0 +1,15 @@
+package com.nikitha.fsd.gipher.repository;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+import com.nikitha.fsd.gipher.model.User;
+
+
+@Repository
+public interface BookmarkRepository extends MongoRepository<User, String> {
+	
+	Boolean addGif(User user);
+	Boolean getAllGifs(User user);
+	void deleteBookmark(String userId,String gifId);
+
+}

@@ -1,0 +1,8 @@
+package com.nikitha.fsd.gipher.model;
+
+public class UserService {
+	
+	private String userId;
+	private <List> Gif gif;
+
+}

@@ -1,0 +1,54 @@
+package com.nikitha.fsd.recommend.config;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+
+import com.nikitha.fsd.gipher.model.User;
+import com.nikitha.fsd.recommend.model.GifConsumed;
+import com.nikitha.fsd.recommend.model.GifModelToSave;
+import com.nikitha.fsd.recommend.service.GifRecommendService;
+import com.nikitha.fsd.recommend.service.GifRecommendServiceImpl;
+
+@Service
+public class KafkaRecommendationListener {
+	
+	GifModelToSave gifModelToSave = new GifModelToSave();
+	@Autowired
+	GifRecommendService gifRecommendService;
+	
+    @KafkaListener(topics = "gif2-topic")
+    public void addNewGif(GifConsumed gif) {
+    		
+     System.out.println("------------------------------------------------------------------------------");
+     System.out.println(gif);
+     System.out.println("------------------------------------------------------------------------------");
+     
+     Optional<GifModelToSave> gifModelToSave= Optional.empty() 
+     GifModelToSave gifFromRecommendSys = gifRecommendService.findGifById(gif.getGifId());
+     if(gifFromRecommendSys!=null)
+     {
+    	 //gif present in the recommend system
+    	 gifFromRecommendSys.setGifId(gif.getGifId());
+    	 gifRecommendSystem.setNumberOfTimeBookmarked(gifFromRecommendSys.getNumberOfTimeBookmarked()+1);
+    	 gifFromRecommendSys.setGifURL(gif.getGifURL());
+    	 gifRecommendService.saveGif(gifFromRecommendSys);
+    	 
+     }
+     else
+     {
+    	 //gif not present in system, save the gif and update the counter to 1 
+    	 gifFromRecommendSys.setGifId(gif.getGifId());
+    	 gifRecommendSystem.setNumberOfTimeBookmarked(1);
+    	 gifFromRecommendSys.setGifURL(gif.getGifURL());
+    	 gifRecommendService.saveGif(gifFromRecommendSys);
+     }
+     
+    }
+    
+    
+    
+
+}

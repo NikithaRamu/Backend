@@ -1,0 +1,85 @@
+package com.nikitha.fsd.gipher.model;
+
+import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+
+public class Gif {
+		
+
+		private String userId;
+		private String gifId;
+		private String gifURL;
+		private int bookmarkCount;
+		private LocalDateTime bookmarkCreatedAt;
+		
+		
+		public Gif()
+		{
+			
+		}
+		
+		
+		public Gif(String userId, String gifId, String gifURL, int bookmarkCount, LocalDateTime bookmarkCreatedAt) {
+			
+			this.userId = userId;
+			this.gifId = gifId;
+			this.gifURL = gifURL;
+			this.bookmarkCount = bookmarkCount;
+			this.bookmarkCreatedAt = bookmarkCreatedAt;
+		}
+
+
+		public String getUserId() {
+			return userId;
+		}
+
+
+		public void setUserId(String userId) {
+			this.userId = userId;
+		}
+
+
+		public String getGifId() {
+			return gifId;
+		}
+
+
+		public void setGifId(String gifId) {
+			this.gifId = gifId;
+		}
+
+
+		public String getGifURL() {
+			return gifURL;
+		}
+
+
+		public void setGifURL(String gifURL) {
+			this.gifURL = gifURL;
+		}
+
+
+		public int getBookmarkCount() {
+			return bookmarkCount;
+		}
+
+
+		public void setBookmarkCount(int bookmarkCount) {
+			this.bookmarkCount = bookmarkCount;
+		}
+
+
+		public LocalDateTime getBookmarkCreatedAt() {
+			return bookmarkCreatedAt;
+		}
+
+
+		public void setBookmarkCreatedAt() {
+			LocalDateTime bookmarkCreatedAt = LocalDateTime.now();
+			this.bookmarkCreatedAt = bookmarkCreatedAt;
+		}
+		
+}

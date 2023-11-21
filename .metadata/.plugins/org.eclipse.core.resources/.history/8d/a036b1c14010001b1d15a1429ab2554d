@@ -1,0 +1,23 @@
+package com.nikitha.fsd.recommend.model;
+
+import java.util.List;
+
+public class GifModelToSave {
+
+	private String gifId;
+	private String gifURL;
+	private int numberOfTimeBookmarked;
+	private List<GifModelToSave> gifList;
+	public GifModelToSave(String gifId, String gifURL, int numberOfTimeBookmarked, List<GifModelToSave> gifList) {
+
+		this.gifId = gifId;
+		this.gifURL = gifURL;
+		this.numberOfTimeBookmarked = numberOfTimeBookmarked;
+		this.gifList = gifList;
+	}
+	
+	
+
+	
+
+}

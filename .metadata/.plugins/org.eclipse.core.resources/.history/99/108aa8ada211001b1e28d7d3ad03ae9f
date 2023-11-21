@@ -1,0 +1,18 @@
+
+server:
+  port: 8083
+spring:
+  application:
+    name: recommend-manager
+  data:
+    mongodb:
+      host: nikitha_mongo
+  kafka:
+    bootstrap-address: kafka:9093
+
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka

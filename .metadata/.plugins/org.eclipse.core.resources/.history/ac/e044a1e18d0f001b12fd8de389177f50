@@ -1,0 +1,6 @@
+package com.nikitha.fsd.recommend;
+
+@Service
+public class kafkaRecommendationListener {
+
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="BookmarkControllerTest.getAllGifsFailure" project="GipherManager" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.nikitha.fsd.gipher.test.controller.BookmarkControllerTest" time="0.228" displayname="BookmarkControllerTest" uniqueid="[engine:junit-jupiter]/[class:com.nikitha.fsd.gipher.test.controller.BookmarkControllerTest]">
+    <testcase name="getAllGifsFailure" classname="com.nikitha.fsd.gipher.test.controller.BookmarkControllerTest" time="0.228" displayname="getAllGifsFailure()" uniqueid="[engine:junit-jupiter]/[class:com.nikitha.fsd.gipher.test.controller.BookmarkControllerTest]/[method:getAllGifsFailure()]"/>
+  </testsuite>
+</testrun>

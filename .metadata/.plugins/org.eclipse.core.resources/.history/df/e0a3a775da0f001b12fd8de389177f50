@@ -1,0 +1,28 @@
+package com.nikitha.fsd.gipher.config;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.core.KafkaTemplate;
+import com.nikitha.fsd.gipher.model.Gif;
+
+public class Sender {
+
+    @Value(value = "${spring.kafka.bootstrap-address}")
+    private String bootstrapAddress;
+
+    @Bean
+    public KafkaAdmin kafkaAdmin() {
+        Map<String, Object> configurations = new HashMap<>();
+        configurations.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG,bootstrapAddress);
+
+        return new KafkaAdmin(configurations);
+    }
+
+    @Bean
+    public NewTopic topic() {
+        return new NewTopic("enquiry.topic",1,(short) 1);
+    }
+
+}

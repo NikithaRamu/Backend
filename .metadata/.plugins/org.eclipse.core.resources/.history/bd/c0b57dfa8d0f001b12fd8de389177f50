@@ -1,0 +1,19 @@
+package com.nikitha.fsd.recommend;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class kafkaRecommendationListener {
+	 @KafkaListener(topics = "enquiry.topic")
+	    @Override
+	    public void addNewTicket(String enquiryCode) {
+	        Ticket ticket = new Ticket();
+	        ticket.setEnquiryCode(enquiryCode);
+	        ticket.setOpen(true);
+
+	        ticketRepository.save(ticket);
+	    }
+	
+
+
+}

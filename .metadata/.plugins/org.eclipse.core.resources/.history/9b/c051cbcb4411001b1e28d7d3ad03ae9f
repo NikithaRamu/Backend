@@ -1,0 +1,199 @@
+package com.nikitha.fsd.gipher.test.service;
+import java.util.Optional;
+
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import com.nikitha.fsd.gipher.exception.BookmarkAlreadyExistsException;
+import com.nikitha.fsd.gipher.model.Gif;
+import com.nikitha.fsd.gipher.model.User;
+import com.nikitha.fsd.gipher.repository.BookmarkRepository;
+import com.nikitha.fsd.gipher.service.BookmarkServiceImpl;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+
+public class BookmarkServiceImplTest {
+
+
+	private User user;
+	private Gif gif;
+    @Mock
+    private BookmarkRepository bookmarkRepository;
+    @InjectMocks
+    private BookmarkServiceImpl bookmarkServiceImpl;
+    private List<Gif> gifList = null;
+    Optional<User> options;
+
+
+    @BeforeEach
+    public void setUp() throws Exception {
+
+        MockitoAnnotations.initMocks(this);
+
+        gif = new Gif();
+       
+        
+        gif.setGifId("1");
+        gif.setGifURL("wwww.gif.com");
+        gif.setBookmarkCreatedAt();
+
+        gifList = new ArrayList<>();
+        gifList.add(gif);
+
+        user = new User();
+
+        user.setUserId("Nikitha");
+        user.setGif(gifList);
+        
+        options= Optional.of(user);
+        
+    }
+
+
+    @Test
+    public void addBookmarkSuccess() throws BookmarkAlreadyExistsException {
+       
+    	when(bookmarkRepository.insert((User) any())).thenReturn(user);
+    	when(bookmarkRepository.findById(user.getUserId())).thenReturn(options);
+    	Gif gif1 = new Gif();
+    	gif1.setGifId("2");
+    	gif1.setGifURL("www.giffy.com");
+    	gif1.setBookmarkCreatedAt();
+        boolean status = bookmarkServiceImpl.addGif("Nikitha",gif1);
+        assertEquals(true, status);
+    }
+
+    @Test
+    public void addNewsFailure() throws BookmarkAlreadyExistsException {
+
+        when(bookmarkRepository.insert((User) any())).thenReturn(user);
+        when(bookmarkRepository.findById(user.getUserId())).thenReturn(options);
+        boolean status = bookmarkServiceImpl.addGif("Nikitha", gif);
+        assertEquals(false, status);
+     }
+    
+    
+    @Test
+    public void getAllGifs() throws BookmarkAlreadyExistsException {
+
+        when(bookmarkRepository.insert((User) any())).thenReturn(user);
+        when(bookmarkRepository.findById(user.getUserId())).thenReturn(options);
+        List<Gif> allGifs = bookmarkServiceImpl.getAllGifs(user.getUserId());
+        assertEquals(gifList, allGifs);
+     }
+    
+    @Test
+    public void getAllGifs() throws BookmarkAlreadyExistsException {
+
+        when(bookmarkRepository.insert((User) any())).thenReturn(user);
+        when(bookmarkRepository.findById(user.getUserId())).thenReturn(options);
+        List<Gif> allGifs = bookmarkServiceImpl.getAllGifs(user.getUserId());
+        assertEquals(gifList, allGifs);
+     }
+    
+//
+//
+//    @Test
+//    public void deleteNewsSuccess() throws NewsNotFoundException {
+//        when(newsRepository.findById(userNews.getUserId())).thenReturn(options);
+//        when(newsRepository.save(userNews)).thenReturn(userNews);
+//        boolean flag = newsServiceImpl.deleteNews("Becky123", news.getNewsId());
+//        assertEquals(true, flag);
+//    }
+//
+//    @Test
+//    public void deleteNewsFailure() {
+//        when(newsRepository.findById(userNews.getUserId())).thenReturn(null);
+//        when(newsRepository.save(userNews)).thenReturn(userNews);
+//        
+//        assertThrows(
+//        		NullPointerException.class,
+//                    () -> { newsServiceImpl.deleteNews("Becky123", news.getNewsId()); });
+//    
+//    }
+//
+//
+//    @Test
+//    public void deleteAllNewsSuccess() throws NewsNotFoundException {
+//
+//        when(newsRepository.findById("Becky123")).thenReturn(options);
+//        when(newsRepository.save(userNews)).thenReturn(userNews);
+//        boolean flag = newsServiceImpl.deleteAllNews("Becky123");
+//        assertEquals(true, flag);
+//
+//    }
+//
+//    
+//
+//    @Test
+//    public void deleteAllNewsFailure() throws NewsNotFoundException {
+//        when(newsRepository.findById("Becky123")).thenThrow(NoSuchElementException.class);
+//        
+//        assertThrows(
+//        		NewsNotFoundException.class,
+//                    () -> { newsServiceImpl.deleteAllNews("Becky123"); });
+//       
+//    }
+//
+//    @Test
+//    public void updateNewsSuccess() throws NewsNotFoundException {
+//
+//        when(newsRepository.findById("Becky123")).thenReturn(options);
+//        news.setContent("Match cancelled");
+//        newsList.add(news);
+//        News fetchedNews = newsServiceImpl.updateNews(news, news.getNewsId(), news.getAuthor());
+//        assertEquals(news, fetchedNews);
+//
+//
+//    }
+//
+//    @Test
+//    public void updateNewsFailure() throws NewsNotFoundException {
+//
+//        when(newsRepository.findById("Becky123")).thenThrow(NoSuchElementException.class);
+//        news.setContent("Match cancelled");
+//        newsList.add(news);
+//        
+//        assertThrows(
+//        		NewsNotFoundException.class,
+//                    () -> { newsServiceImpl.updateNews(news, news.getNewsId(), news.getAuthor()); });
+//
+//    }
+//
+//    @Test
+//    public void getNewsByNewsIdSuccess() throws NewsNotFoundException {
+//        when(newsRepository.findById("Becky123")).thenReturn(options);
+//        News fetechedNews = newsServiceImpl.getNewsByNewsId("Becky123", news.getNewsId());
+//        assertEquals(news, fetechedNews);
+//    }
+//
+//    @Test
+//    public void getNewsByNewsIdFailure() throws NewsNotFoundException {
+//        when(newsRepository.findById("Becky123")).thenThrow(NoSuchElementException.class);
+//        
+//        assertThrows(
+//        		NewsNotFoundException.class,
+//                    () -> { newsServiceImpl.getNewsByNewsId("Becky123", news.getNewsId()); });
+//       
+//    }
+//
+//    @Test
+//    public void getAllNewsByUserId() {
+//        when(newsRepository.findById("Becky123")).thenReturn(options);
+//        List<News> newslist1 = newsServiceImpl.getAllNewsByUserId("Becky123");
+//        assertEquals(newsList, newslist1);
+//    }
+}

@@ -1,0 +1,17 @@
+package com.nikitha.fsd.gipher.model;
+
+import java.util.List;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
+public class Bookmark {
+	
+	@Id
+	private String userId;
+	private List<Gif> gif;
+	
+	
+	
+
+}

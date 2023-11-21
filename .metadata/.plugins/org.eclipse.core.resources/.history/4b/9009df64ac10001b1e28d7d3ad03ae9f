@@ -1,0 +1,21 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: api-gateway
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+zuul:
+  host:
+    connect-time-millis: 60000
+  routes:
+    gipher:
+      serviceId: gipher-manager
+    recommend:
+      serviceId: recommend-manager
+    user:
+	  serviceId: user-service	

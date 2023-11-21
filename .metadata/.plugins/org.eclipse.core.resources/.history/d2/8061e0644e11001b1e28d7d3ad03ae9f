@@ -1,0 +1,12 @@
+package nikitha.fsd.zuul;
+
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class NewzNetflixZuulApiGatwayApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

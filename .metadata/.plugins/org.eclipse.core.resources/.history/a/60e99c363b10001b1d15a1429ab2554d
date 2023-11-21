@@ -1,0 +1,5 @@
+package com.nikitha.fsd.recommend.model;
+
+public class GifList {
+
+}

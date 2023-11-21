@@ -1,0 +1,12 @@
+
+import java.util.List;
+import com.nikitha.fsd.recommend.model.GifRecommendSystem;
+
+
+
+public interface GifRecommendService  {
+
+	List<GifRecommendSystem> getAllGifs(String gifId); 
+	
+
+}

@@ -1,0 +1,72 @@
+package com.nikitha.fsd.gipher.model;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
+public class Gif {
+		
+		@Id
+		private String userId;
+		private String gif_id;
+		private String gif_url;
+		private int bookmark_count;
+		
+		
+		public Gif() {
+			
+		}
+
+
+		public Gif(String userId, String gif_id, String gif_url, int bookmark_count) {
+			this.userId = userId;
+			this.gif_id = gif_id;
+			this.gif_url = gif_url;
+			this.bookmark_count = bookmark_count;
+		}
+
+
+		public String getUserId() {
+			return userId;
+		}
+
+
+		public void setUserId(String userId) {
+			this.userId = userId;
+		}
+
+
+		public String getGif_id() {
+			return gif_id;
+		}
+
+
+		public void setGif_id(String gif_id) {
+			this.gif_id = gif_id;
+		}
+
+
+		public String getGif_url() {
+			return gif_url;
+		}
+
+
+		public void setGif_url(String gif_url) {
+			this.gif_url = gif_url;
+		}
+
+
+		public int getBookmark_count() {
+			return bookmark_count;
+		}
+
+
+		public void setBookmark_count(int bookmark_count) {
+			this.bookmark_count = bookmark_count;
+		}
+		
+		
+		
+		
+
+}

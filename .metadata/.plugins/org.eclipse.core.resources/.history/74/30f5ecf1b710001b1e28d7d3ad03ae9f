@@ -1,0 +1,12 @@
+package com.nikitha.fsd.zuul.config;
+
+@Configuration
+public class WebMvcConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+
+        registry.addMapping("/**")
+                .allowedMethods("POST", "PUT", "GET", "OPTIONS", "DELETE", "HEAD");
+    }
+}

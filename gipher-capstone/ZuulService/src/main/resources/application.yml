@@ -1,0 +1,28 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: api-gateway
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka
+zuul:
+  ribbon:
+    ReadTimeout:60000 
+  ignoredHeaders: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
+   
+  routes:
+    gipher:
+      serviceId: gipher-manager
+    recommend:
+      serviceId: recommend-manager
+    user:
+      serviceId: user-service	
+management:
+  endpoints:
+    web:
+      exposure:
+        include: routes, filters

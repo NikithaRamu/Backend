@@ -1,0 +1,7 @@
+package com.nikitha.fsd.gipher.repository;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface GipherRepository extends MongoRepository<T, ID> {
+
+}

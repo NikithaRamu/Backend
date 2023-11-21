@@ -1,0 +1,70 @@
+services:
+  mysqldb_nikitha:
+    restart: always
+    image: mysql
+    ports:
+      - 6603:3306
+    container_name: mysqldb_nikitha
+    environment:
+         MYSQL_ROOT_PASSWORD: root
+         MYSQL_DATABASE: UserProfiles
+   
+  zuul:
+    restart: always
+    build:
+      context: ./ZuulService
+    ports:
+      - 9000:9000
+    container_name: zuul
+    depends_on:
+      - eureka
+    healthcheck:
+      test: "exit 0" 
+    expose:
+      - 9000 
+
+  eureka:
+    restart: always
+    build:
+      context: ./EurekaService
+    ports:
+      - 8761:8761
+    container_name: eureka
+    healthcheck:
+      test: "exit 0"  
+    expose:
+      - 8761 
+  
+  user-service:
+    restart: on-failure
+    build:
+      context: ./\UserAuthentication
+    depends_on:
+      - mysqldb_nikitha
+      - eureka
+    ports:
+      - 8080:8080
+    expose: 
+      - 8082
+
+  mymongo:
+    container_name: mymongo
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    ports:
+      - 27017:17017
+  
+  house_service:
+    restart: on-failure
+    build:
+      context: ./HouseService
+    depends_on:
+      - mymongo
+      - eureka
+    ports:
+      - 8081:8081
+    expose: 
+      - 8081

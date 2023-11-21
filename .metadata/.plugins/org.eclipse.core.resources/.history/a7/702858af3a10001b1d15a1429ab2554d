@@ -1,0 +1,11 @@
+package com.nikitha.fsd.recommend.model;
+
+
+
+
+public class GifRecommendSystem<Gif> {
+	
+
+
+
+}

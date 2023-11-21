@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UserAuthControllerTest" project="UserAuthentication" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="com.nikitha.fsd.auth.test.controller.UserAuthControllerTest" time="0.649" displayname="UserAuthControllerTest" uniqueid="[engine:junit-jupiter]/[class:com.nikitha.fsd.auth.test.controller.UserAuthControllerTest]">
+    <testcase name="testLoginUser" classname="com.nikitha.fsd.auth.test.controller.UserAuthControllerTest" time="0.601" displayname="testLoginUser()" uniqueid="[engine:junit-jupiter]/[class:com.nikitha.fsd.auth.test.controller.UserAuthControllerTest]/[method:testLoginUser()]"/>
+    <testcase name="testRegisterUser" classname="com.nikitha.fsd.auth.test.controller.UserAuthControllerTest" time="0.048" displayname="testRegisterUser()" uniqueid="[engine:junit-jupiter]/[class:com.nikitha.fsd.auth.test.controller.UserAuthControllerTest]/[method:testRegisterUser()]"/>
+  </testsuite>
+</testrun>

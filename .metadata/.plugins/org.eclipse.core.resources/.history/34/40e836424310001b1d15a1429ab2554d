@@ -1,0 +1,10 @@
+
+server:
+  port: 8083
+spring:
+  data:
+    mongodb:
+      database: gipherRecommendSys
+      uri: mongodb://127.0.0.1:27017/test2?retryWrites=true&w=majority
+  kafka:
+    bootstrap-address: localhost:9092

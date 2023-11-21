@@ -1,0 +1,99 @@
+package com.nikitha.fsd.gipher.controller;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.nikitha.fsd.gipher.exception.BookmarkAlreadyExistsException;
+import com.nikitha.fsd.gipher.exception.NoSuchBookmarkExists;
+import com.nikitha.fsd.gipher.model.Gif;
+import com.nikitha.fsd.gipher.model.User;
+import com.nikitha.fsd.gipher.service.BookmarkService;
+
+@RestController
+@CrossOrigin(origins="*")
+public class BookmarkController {
+	
+	@Autowired
+	BookmarkService bookmarkService;
+
+	@Autowired
+	KafkaTemplate<String, String> kafkaTemplate;
+	
+	
+	@RequestMapping(value="/api/v1/bookmark/{userId}/gif",method = RequestMethod.POST)	
+	public ResponseEntity<Gif> addGif(@RequestBody Gif gif ,@PathVariable String userId) throws BookmarkAlreadyExistsException
+	{	
+		ResponseEntity <Gif>responseEntity =null;	
+		boolean isGifAdded=false;
+		isGifAdded=bookmarkService.addGif(userId, gif);
+    	if(isGifAdded)
+    	{
+    
+    		responseEntity = new ResponseEntity<Gif>(gif,HttpStatus.CREATED);
+    		kafkaTemplate.send("gif-topic",gif.toString());
+    	}
+    	else
+    	{
+    		responseEntity = new ResponseEntity<Gif>(gif,HttpStatus.CONFLICT);
+    	}
+
+		return responseEntity;
+	}
+	
+	
+	@RequestMapping(value="/api/v1/bookmark/{userId}",method = RequestMethod.GET)	
+	public ResponseEntity<Optional<List<Gif>>> getAllBookmarks(@PathVariable String userId) 
+	{	
+		ResponseEntity<Optional<List<Gif>>>responseEntity =null;	
+		Optional<List<Gif>> gifListForUser= Optional.empty();
+		gifListForUser=Optional.ofNullable(bookmarkService.getAllGifs(userId));
+		List<Gif>gifListForUsers = new ArrayList<Gif>();
+    	if(gifListForUser.isPresent())
+    	{
+    		gifListForUser.get().sort(Comparator.comparing(Gif::getBookmarkCreatedAt).reversed());
+    		responseEntity = new ResponseEntity<Optional<List<Gif>>>(gifListForUser,HttpStatus.FOUND);
+    	}
+    	else
+    	{
+    		responseEntity = new ResponseEntity<Optional<List<Gif>>>(HttpStatus.NOT_FOUND);
+    	}
+
+		return responseEntity;
+	}
+
+	@RequestMapping(value="/api/v1/bookmark/{userId}/{gifId}",method = RequestMethod.DELETE)	
+	public ResponseEntity<Optional<List<Gif>>> deleteBookmark(@PathVariable("userId") String userId,@PathVariable("gifId") String gifId) throws NoSuchBookmarkExists 
+	
+	{	
+		ResponseEntity<Optional<List<Gif>>>responseEntity =null;	
+		Boolean isBookmarkDeleted = false;
+		isBookmarkDeleted=bookmarkService.deleteBookmark(userId, gifId);
+    	if(isBookmarkDeleted)
+    	{
+    		responseEntity = new ResponseEntity<Optional<List<Gif>>>(HttpStatus.OK);
+    	}
+    	else
+    	{
+    		responseEntity = new ResponseEntity<Optional<List<Gif>>>(HttpStatus.NOT_FOUND);
+    	}
+
+		return responseEntity;
+	}
+	
+
+}

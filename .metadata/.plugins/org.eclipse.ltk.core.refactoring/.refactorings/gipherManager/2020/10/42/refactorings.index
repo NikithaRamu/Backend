@@ -1,0 +1,54 @@
+1602396685508	Copy package
+1602396710691	Copy package
+1602396720378	Copy package
+1602396837450	Rename type 'GipherManagerApplication'
+1602396851479	Delete element
+1602402631928	Copy package
+1602402639154	Delete element
+1602403120355	Rename field 'gif_url'
+1602403143747	Rename field 'bookmark_count'
+1602403336999	Copy package
+1602403352054	Copy package
+1602403358136	Delete element
+1602403366332	Copy package
+1602403380185	Delete element
+1602403382229	Delete element
+1602403391406	Copy package
+1602403394851	Delete element
+1602404240989	Rename type 'UserService'
+1602404416338	Rename type 'GipherRepository'
+1602404437516	Rename type 'GiferServiceImpl'
+1602404454785	Rename type 'GipherService'
+1602407917615	Rename type 'Bookmark'
+1602408832351	Rename type 'BookmakrRepository'
+1602409702878	Copy package
+1602409735010	Delete element
+1602413932025	Rename field 'bookRepository'
+1602414399907	Delete element
+1602415990852	Copy compilation unit
+1602431520761	Copy package
+1602431533682	Delete element
+1602431541311	Move compilation unit
+1602431546911	Delete element
+1602613990358	Copy package
+1602614065176	Copy package
+1602614078344	Copy package
+1602783997020	Copy package
+1602784010925	Delete element
+1602821753924	Copy package
+1602821766767	Rename package 'com.nikitha.fsd.gipher.controller'
+1602822344622	Rename type 'BookmarkController'
+1602827742440	Delete element
+1602827771878	Rename package 'repository'
+1602827895708	Rename type 'NewsRepositoryTest'
+1602829452921	Rename package 'service'
+1602829496508	Rename type 'NewsServiceImplTest'
+1602830680628	Rename compilation unit 'BookmarkServiceImpl.java'
+1602837588615	Copy file
+1602839545298	Copy package
+1602867572981	Rename compilation unit 'ProducerConfig.java'
+1602867963627	Delete element
+1602907076316	Copy packages
+1602910296615	Copy package
+1602917945185	Copy package
+1602955480098	Copy file

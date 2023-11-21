@@ -1,0 +1,5 @@
+package com.nikitha.fsd.recommend.config;
+
+public class KafkaConsumerConfig {
+
+}

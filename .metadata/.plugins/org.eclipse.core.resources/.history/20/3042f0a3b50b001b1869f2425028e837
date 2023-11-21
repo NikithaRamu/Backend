@@ -1,0 +1,16 @@
+package com.nikitha.fsd.gipher.service;
+import java.util.List;
+
+import com.nikitha.fsd.gipher.exception.BookmarkAlreadyExistsException;
+
+import com.nikitha.fsd.gipher.model.Gif;
+import com.nikitha.fsd.gipher.model.User;
+
+
+
+public interface BookmarkService  {
+	Boolean addGif(User user,Gif gif) throws BookmarkAlreadyExistsException;
+	List<Gif> getAllGifs(User user); 
+	void deleteBookmark(String userId,String gifId) throws NoSuchBookmarkExists;
+
+}

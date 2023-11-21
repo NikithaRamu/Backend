@@ -1,0 +1,163 @@
+package com.nikitha.fsd.gipher.test.controller;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.nikitha.fsd.gipher.controller.BookmarkController;
+import com.nikitha.fsd.gipher.model.Gif;
+import com.nikitha.fsd.gipher.model.User;
+import com.nikitha.fsd.gipher.service.BookmarkService;
+
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.when;
+
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureMockMvc
+public class BookmarkControllerTest {
+
+    @LocalServerPort
+    int randomServerPort;
+
+    @Autowired
+    private MockMvc mockMvc;
+    private Gif gif;
+    private User user;
+    @MockBean
+    private BookmarkService bookmarkService;
+    @InjectMocks
+    private BookmarkController bookmarkController;
+    private List<Gif> gifList = null;
+
+
+    @BeforeEach
+    public void setUp() throws Exception {
+
+        MockitoAnnotations.initMocks(this);
+        mockMvc = MockMvcBuilders.standaloneSetup(bookmarkController).build();
+        gif = new Gif();
+        gif.setGifId("1");
+        gif.setGifURL("www.gif.com");
+        gif.setBookmarkCreatedAt();
+        gifList = new ArrayList<>();
+        gifList.add(gif);
+        
+        user = new User();
+        user.setUserId("Nikitha");
+        
+    }
+
+    @Test
+    public void bookmarkGifSucess() throws Exception {
+        when(bookmarkService.addGif(any(),any())).thenReturn(true);
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/bookmark/Nikitha/gif")
+                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(gif)))
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andDo(MockMvcResultHandlers.print());
+
+    }
+
+    @Test
+    public void bookmarkGifFailure() throws Exception {
+
+    when(bookmarkService.addGif(any(),any())).thenReturn(false);
+    mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/bookmark/nikitha/gif")
+            .contentType(MediaType.APPLICATION_JSON).content(asJsonString(gif)))
+                .andExpect(MockMvcResultMatchers.status().isConflict())
+                .andDo(MockMvcResultHandlers.print());
+
+    }
+
+
+    @Test
+    public void deleteBookMarkSuccess() throws Exception {
+    	
+        when(bookmarkService.deleteBookmark("nikitha"," 1")).thenReturn(true);
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/bookmark/nikitha/1")
+                .contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print());
+    }
+//
+//
+//    @Test
+//    public void deleteNewssourceFailure() throws Exception {
+//
+//        when(newssourceService.deleteNewsSource(1)).thenReturn(false);
+//        mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/newssource/1")
+//                .contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isNotFound())
+//                .andDo(MockMvcResultHandlers.print());
+//    }
+//
+//
+//    @Test
+//    public void updateNewssourceSuccess() throws Exception {
+//
+//        when(newssourceService.updateNewsSource(any(), eq(newsSource.getNewsSourceId()))).thenReturn(newsSource);
+//        mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/newssource/1")
+//                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(newsSource)))
+//                .andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print());
+//    }
+//
+//    @Test
+//    public void updateNewssourceFailure() throws Exception {
+//
+//        when(newssourceService.updateNewsSource(any(), eq(newsSource.getNewsSourceId()))).thenThrow(NewsSourceNotFoundException.class);
+//        mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/newssource/1")
+//                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(newsSource)))
+//                .andExpect(MockMvcResultMatchers.status().isNotFound()).andDo(MockMvcResultHandlers.print());
+//    }
+//
+//
+//    @Test
+//    public void getNewssourceByIdSuccess() throws Exception {
+//        when(newssourceService.getNewsSourceById(newsSource.getNewsSourceCreatedBy(),newsSource.getNewsSourceId())).thenReturn(newsSource);
+//        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/newssource/Becky123/1")
+//                .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(MockMvcResultMatchers.status().isOk());
+//    }
+//
+//
+//    @Test
+//    public void getNewssourceByIdFailure() throws Exception {
+//    	int newssourceId = newsSource.getNewsSourceId();
+//        when(newssourceService.getNewsSourceById(newsSource.getNewsSourceCreatedBy(),newssourceId)).thenThrow(NewsSourceNotFoundException.class);
+//        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/newssource/Becky123/1")
+//                .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(MockMvcResultMatchers.status().isNotFound());
+//    }
+//
+//
+    private static String asJsonString(final Object obj) {
+        try {
+        	ObjectMapper objmapper = new ObjectMapper();
+        	objmapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        	objmapper.registerModule(new JavaTimeModule());
+            return objmapper.writeValueAsString(obj);
+         } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+}

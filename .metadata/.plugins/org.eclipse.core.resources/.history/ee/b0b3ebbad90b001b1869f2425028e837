@@ -1,0 +1,12 @@
+package com.nikitha.fsd.gipher.repository.config;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+import com.nikitha.fsd.gipher.model.User;
+
+
+@Repository
+public interface BookmarkRepository extends MongoRepository<User, String> {
+	
+
+}

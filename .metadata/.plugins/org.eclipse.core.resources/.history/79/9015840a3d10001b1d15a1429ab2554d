@@ -1,0 +1,50 @@
+package com.nikitha.fsd.recommend.model;
+
+import java.util.List;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
+public class User {
+	
+	@Id
+	private String userId;
+	private List<GifConsumed> gif;
+
+	public User() {
+
+	}
+	
+	public User(String userId, List<GifConsumed> gif) {
+
+		this.userId = userId;
+		this.gif = gif;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public List<GifConsumed> getGif() {
+		return gif;
+	}
+
+	public void setGif(List<GifConsumed> gif) {
+		this.gif = gif;
+	}
+
+	@Override
+	public String toString() {
+		return "Bookmark [userId=" + userId + ", gif=" + gif + "]";
+	}
+	
+	
+	
+	
+
+}

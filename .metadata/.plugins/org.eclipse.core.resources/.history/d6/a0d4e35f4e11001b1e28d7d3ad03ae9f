@@ -1,0 +1,10 @@
+package nikitha.fsd.zuul;
+
+@SpringBootTest
+class NewzNetflixZuulApiGatwayApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

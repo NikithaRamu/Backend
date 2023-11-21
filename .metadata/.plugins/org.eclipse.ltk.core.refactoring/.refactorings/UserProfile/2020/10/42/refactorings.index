@@ -1,0 +1,11 @@
+1602614018782	Rename package 'com.nikitha.fsd.gipher'
+1602614047966	Rename type 'GipherManagerApplication'
+1602614073732	Delete element
+1602614081131	Delete element
+1602614139095	Rename package 'aspect'
+1602614160122	Rename package 'config'
+1602614174804	Rename package 'controller'
+1602614185907	Rename package 'model'
+1602614194443	Rename package 'repository'
+1602614208463	Rename package 'service'
+1602614219877	Rename package 'util.exception'

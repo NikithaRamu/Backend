@@ -1,0 +1,91 @@
+version: '3.5'
+services:
+  mysqldb_nikitha:
+    restart: always
+    image: mysql
+    ports:
+      - 6603:3306
+    container_name: mysqldb_nikitha
+    environment:
+         MYSQL_ROOT_PASSWORD: root
+         MYSQL_DATABASE: UserProfiles
+   
+  zuul:
+    restart: always
+    build:
+      context: ./ZuulService
+    ports:
+      - 8084:8084
+    container_name: zuul
+    depends_on:
+      - eureka
+    healthcheck:
+      test: "exit 0" 
+    expose:
+      - 8084 
+
+  eureka:
+    restart: always
+    build:
+      context: ./EurekaService
+    ports:
+      - 8761:8761
+    container_name: eureka
+    healthcheck:
+      test: "exit 0"  
+    expose:
+      - 8761 
+  
+  user-service:
+    restart: on-failure
+    build:
+      context: ./UserAuthentication
+    depends_on:
+      - mysqldb_nikitha
+      - eureka
+    healthcheck:
+      test: "exit 0"
+    ports:
+      - 8082:8082
+    expose: 
+      - 8082
+
+  nikitha_mongo:
+    container_name: nikitha_mongo
+    image: mongo
+    restart: always
+    healthcheck:
+      test: "exit 0"
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    ports:
+      - 27017:17017
+  
+  recommend-manager:
+    restart: on-failure
+    build:
+      context: ./RecommendationSystem
+    depends_on:
+      - nikitha_mongo
+      - eureka
+    healthcheck:
+      test: "exit 0"
+    ports:
+      - 8083:8083
+    expose: 
+      - 8083
+
+  gipher-manager:
+    restart: on-failure
+    build:
+      context: ./GipherManager
+    depends_on:
+      - nikitha_mongo
+      - eureka
+    healthcheck:
+      test: "exit 0"
+    ports:
+      - 8081:8081
+    expose: 
+      - 8081
